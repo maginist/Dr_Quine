@@ -6,7 +6,7 @@
 #    By: maginist <maginist@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/20 14:46:55 by maginist          #+#    #+#              #
-#    Updated: 2020/11/20 17:52:37 by maginist         ###   ########.fr        #
+#    Updated: 2020/11/23 17:33:06 by maginist         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ COLLEEN = Colleen
 GRACE = Grace
 SULLY = Sully
 
-NASM = nasm -f elf64 
+NASM = nasm -f elf64 -dNEW=1
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
