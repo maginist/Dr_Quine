@@ -1,13 +1,12 @@
 %define ACCESS 0x2000021
 section .data
 sully:
-	.str db "%%define ACCESS 0x2000021%2$csection .data%2$csully:%2$c%3$c.str db %4$c%1$s%4$c,0%2$c%3$c.fd db %4$cSully_%%d.s%4$c,0%2$c%3$c.exec db %4$cSully_%%d%4$c,0%2$c%3$c.format db %4$cw%4$c,0%2$c%3$c.nasm db %4$cnasm -f elf64 %%s%4$c,0%2$c%3$c.gcc db %4$cgcc %%s.o -o %%s%4$c,0%2$c%3$c.sh db %4$c./%%s%4$c,0%2$csection .text%2$c%3$cglobal main%2$c%3$cextern fprintf, fopen, fclose, sprintf, system%2$cmain:%2$c%3$cpush rbp%2$c%3$cmov rbp, rsp%2$c%3$cmov r15, 5%2$c%3$ccmp r15, 0%2$c%3$cjle end%2$c%3$csub rsp, 16%2$c%3$clea rdi, [rel rsp]%2$c%3$clea rsi, [rel sully.fd]%2$c%3$cmov rdx, r15%2$c%3$ccall sprintf%2$c%3$cmov rax, ACCESS%2$c%3$csyscall%2$c%3$ccmp rax, 0x0%2$c%3$cjnz test%2$c%3$cdec r15%2$ctest:%2$c%3$cmov rdi, rsp%2$c%3$clea rsi, [rel sully.format]%2$c%3$ccall fopen%2$c%3$c%2$c%3$cpush rax%2$c%3$cmov rdi, rax%2$c%3$cmov rax, 0%2$c%3$clea rsi, [rel sully.str]%2$c%3$clea rdx, [rel sully.str]%2$c%3$cmov rcx, 10%2$c%3$cmov r8, 9%2$c%3$cmov r9, 34%2$c%3$cmov r10, r15%2$c%3$ccall fprintf%2$c%3$cpop rdi%2$c%3$ccall fclose%2$c%3$clea rdx, [rel rsp]%2$c%3$csub rsp, 16%2$c%3$clea rdi, [rel rsp]%2$c%3$clea rsi, [rel sully.nasm]%2$c%3$ccall sprintf%2$c%3$clea rdi, [rel rsp]%2$c%3$ccall system%2$c%3$csub rsp, 16%2$c%3$clea rdi, [rel rsp]%2$c%3$clea rsi, [rel sully.exec]%2$c%3$cmov rdx, r15%2$c%3$ccall sprintf%2$c%3$clea rdi, [rel rsp]%2$c%3$csub rsp, 16%2$c%3$clea rdi, [rel rsp]%2$c%3$clea rsi, [rel sully.gcc]%2$c%3$clea rdx, [rel rsp]%2$c%3$ccall sprintf%2$c%3$clea rdi, [rel rsp]%2$c%3$ccall system%2$c%3$csub rsp, 16%2$c%3$clea rdi, [rel rsp]%2$c%3$clea rsi, [rel sully.sh]%2$c%3$cmov rdx, r15%2$c%3$ccall sprintf%2$c%3$clea rdi, [rel rsp]%2$c%3$ccall system%2$cend:%2$c%3$cleave%2$c%3$cmov rax, 0%2$c%3$cret",0
+	.str db "%%define ACCESS 0x2000021%2$csection .data%2$csully:%2$c%3$c.str db %4$c%1$s%4$c,0%2$c%3$c.fd db %4$cSully_%%d.s%4$c,0%2$c%3$c.exec db %4$cSully_%%d%4$c,0%2$c%3$c.format db %4$cw%4$c,0%2$c%3$c.nasm db %4$cnasm -f elf64 %%s%4$c,0%2$c%3$c.gcc db %4$cgcc %%s.o -o %%s; ./%%s%4$c,0%2$c%3$c%2$csection .text%2$c%3$cglobal main%2$c%3$cextern fprintf, fopen, fclose, sprintf, system%2$cmain:%2$c%3$cpush rbp%2$c%3$cmov rbp, rsp%2$c%3$cmov r15, 5%2$c%3$ccmp r15, 0%2$c%3$cjle end%2$c%3$csub rsp, 16%2$c%3$clea rdi, [rel rsp]%2$c%3$clea rsi, [rel sully.fd]%2$c%3$cmov rdx, r15%2$c%3$ccall sprintf%2$c%3$cmov rax, ACCESS%2$c%3$csyscall%2$c%3$ccmp rax, 0x0%2$c%3$cjnz test%2$c%3$cdec r15%2$ctest:%2$c%3$cmov rdi, rsp%2$c%3$clea rsi, [rel sully.format]%2$c%3$ccall fopen%2$c%3$cpush rax%2$c%3$cmov rdi, rax%2$c%3$cmov rax, 0%2$c%3$clea rsi, [rel sully.str]%2$c%3$clea rdx, [rel sully.str]%2$c%3$cmov rcx, 10%2$c%3$cmov r8, 9%2$c%3$cmov r9, 34%2$c%3$cmov r10, r15%2$c%3$ccall fprintf%2$c%3$cpop rdi%2$c%3$ccall fclose%2$c%3$clea rdx, [rel rsp]%2$c%3$csub rsp, 16%2$c%3$clea rdi, [rel rsp]%2$c%3$clea rsi, [rel sully.nasm]%2$c%3$ccall sprintf%2$c%3$clea rdi, [rel rsp]%2$c%3$ccall system%2$c%3$csub rsp, 16%2$c%3$clea rdi, [rel rsp]%2$c%3$clea rsi, [rel sully.exec]%2$c%3$cmov rdx, r15%2$c%3$ccall sprintf%2$c%3$clea rdx, [rel rsp]%2$c%3$csub rsp, 32%2$c%3$clea rdi, [rel rsp]%2$c%3$clea rsi, [rel sully.gcc]%2$c%3$clea rcx, [rel rsp + 32]%2$c%3$clea r8, [rel rsp + 32]%2$c%3$ccall sprintf%2$c%3$clea rdi, [rel rsp]%2$c%3$ccall system%2$cend:%2$c%3$cleave%2$c%3$cmov rax, 0%2$c%3$cret",0
 	.fd db "Sully_%d.s",0
 	.exec db "Sully_%d",0
 	.format db "w",0
 	.nasm db "nasm -f elf64 %s",0
-	.gcc db "gcc %s.o -o %s",0
-	.sh db "./%s",0
+	.gcc db "gcc %s.o -o %s; ./%s",0
 
 section .text
 	global main
@@ -56,22 +55,15 @@ test:
 	lea rsi, [rel sully.exec]
 	mov rdx, r15
 	call sprintf
-	lea rdi, [rel rsp]
-	sub rsp, 16
+	lea rdx, [rel rsp]
+	sub rsp, 32
 	lea rdi, [rel rsp]
 	lea rsi, [rel sully.gcc]
-	lea rdx, [rel rsp]
+	lea rcx, [rel rsp + 32]
+	lea r8, [rel rsp + 32]
 	call sprintf
 	lea rdi, [rel rsp]
 	call system
-	sub rsp, 16
-	lea rdi, [rel rsp]
-	lea rsi, [rel sully.sh]
-	mov rdx, r15
-	call sprintf
-	lea rdi, [rel rsp]
-	call system
-
 end:
 	leave
 	mov rax, 0
