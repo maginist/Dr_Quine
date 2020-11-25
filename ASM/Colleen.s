@@ -4,7 +4,7 @@ colleen:
 	; data
 section .text
 	global main
-	extern printf 
+	extern printf
 main:
 	push rbp
 	mov rbp, rsp

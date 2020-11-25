@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: maginist <maginist@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/11/20 14:46:55 by maginist          #+#    #+#              #
-#    Updated: 2020/11/25 13:00:08 by maginist         ###   ########.fr        #
+#    Created: 2020/11/25 13:04:57 by maginist          #+#    #+#              #
+#    Updated: 2020/11/25 13:22:29 by maginist         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,17 +15,12 @@ COLLEEN = Colleen
 GRACE = Grace
 SULLY = Sully
 
-NASM = nasm -f elf64 -dNEW=1
-CC = gcc
-FLAGS = -Wall -Wextra -Werror
+PY = python3
 
-S_COLLEEN = Colleen.s
-S_GRACE = Grace.s
-S_SULLY = Sully.s
+S_COLLEEN = Colleen.py
+S_GRACE = Grace.py
+S_SULLY = Sully.py
 
-OBJ1 = $(S_COLLEEN:.s=.o)
-OBJ2 = $(S_GRACE:.s=.o)
-OBJ3 = $(S_SULLY:.s=.o)
 
 # Colors
 CK = $'\033[30m$'
@@ -44,29 +39,26 @@ _END=$'\033[0m$'
 
 all: $(COLLEEN) $(GRACE) $(SULLY)
 
-$(COLLEEN) : $(OBJ1)
-		@$(CC) $(FLAGS) -o $(COLLEEN) $(OBJ1)
+$(COLLEEN) : $(S_COLLEEN)
+		@$(PY) $(S_COLLEEN) > COLLEEN_tmp
 		@echo "$(_GREEN)[ COLLEEN DONE ]$(_END)"
 
-$(GRACE) : $(OBJ2)
+$(GRACE) : $(S_GRACE)
 		@echo "\n"
-		@$(CC) $(FLAGS) -o $(GRACE) $(OBJ2)
+		@$(PY) $(S_GRACE)
 		@echo "$(_GREEN)[ GRACE DONE ]$(_END)"
 
-$(SULLY) : $(OBJ3)
+$(SULLY) : $(S_SULLY)
 		@echo "\n"
-		@$(CC) $(FLAGS) -o $(SULLY) $(OBJ3)
+		@$(PY) $(S_SULLY)
 		@echo "$(_GREEN)[ SULLY DONE ]$(_END)"
 
-%.o: %.s
-	@$(NASM) $< 
-
 clean :
-	@rm -rf $(OBJ1) $(OBJ2) $(OBJ3) Sully_*.o
-	@echo "$(_BLUE)======< CLEAN PROJECT >======$(_END)"
+	@rm -f COLLEEN_tmp
+	@echo "$(_BLUE)======< cleaning >======$(_END)"
 
 fclean : clean
-	@rm -f $(COLLEEN) $(GRACE) $(SULLY) Grace_kid.s Sully_*
-	@echo "$(_BLUE)======< FCLEAN PROJECT >======$(_END)"
+	@rm -f $(COLLEEN) $(GRACE) $(SULLY) Grace_kid.py Sully_*
+	@echo "$(_BLUE)======< Fclean complete >======$(_END)"
 
 re : fclean all
